@@ -1,18 +1,27 @@
 //
-//  BasicKeyboardViewController.m
+//  HistoryViewController.m
 //  PowerCalc
 //
-//  Created by Eugene Dimitrow on 9/16/14.
+//  Created by Eugene Dimitrow on 9/20/14.
 //  Copyright (c) 2014 Eugene Dimitrow. All rights reserved.
 //
 
-#import "BasicViewController.h"
+#import "HistoryViewController.h"
 
-@interface BasicViewController ()
+@interface HistoryViewController ()
 
 @end
 
-@implementation BasicViewController
+@implementation HistoryViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
