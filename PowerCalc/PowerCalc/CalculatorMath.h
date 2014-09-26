@@ -9,5 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface CalculatorMath : NSObject
+{
+    NSMutableArray *operations;
+    NSMutableArray *numbers;
+}
 
+@property (strong, nonatomic) NSString *mathResult;
+
+- (double)choosenOperation:(NSString *)operation withNumber:(NSString *)number;
+- (void)clear;
 @end

@@ -7,15 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KeyboardRootViewController.h"
+#import "CalculatorMath.h"
 
-#import "BasicViewController.h"
-#import "AdvancedViewController.h"
+@interface MainViewController : UIViewController <UIScrollViewDelegate>
+{
+    CalculatorMath *calculator;
+}
 
-@interface MainViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIScrollView *keyboardView;
+@property (weak, nonatomic) IBOutlet UIPageControl *keyboardIndicator;
 
-@property (strong, nonatomic) BasicViewController *basicKeyboardVC;
-@property (strong, nonatomic) AdvancedViewController *advancedKeyboardVC;
+@property (weak, nonatomic) IBOutlet UIView *screenView;
+@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
+@property (weak, nonatomic) IBOutlet UILabel *expressionLabel;
+@property (weak, nonatomic) IBOutlet UIView *functionView;
 
 @end

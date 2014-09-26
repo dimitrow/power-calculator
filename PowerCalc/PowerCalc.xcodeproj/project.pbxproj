@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		162F385819CDB703008EC8EE /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162F385719CDB703008EC8EE /* HistoryViewController.m */; };
 		1666F72419C8BB3400378EC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1666F72319C8BB3400378EC9 /* Foundation.framework */; };
 		1666F72619C8BB3400378EC9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1666F72519C8BB3400378EC9 /* CoreGraphics.framework */; };
 		1666F72819C8BB3400378EC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1666F72719C8BB3400378EC9 /* UIKit.framework */; };
@@ -20,10 +21,14 @@
 		1666F74519C8BB3400378EC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1666F72719C8BB3400378EC9 /* UIKit.framework */; };
 		1666F74D19C8BB3400378EC9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1666F74B19C8BB3400378EC9 /* InfoPlist.strings */; };
 		1666F74F19C8BB3400378EC9 /* PowerCalcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666F74E19C8BB3400378EC9 /* PowerCalcTests.m */; };
-		1666F75A19C8BD0200378EC9 /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666F75919C8BD0200378EC9 /* BasicViewController.m */; };
-		1666F75D19C8BD3100378EC9 /* AdvancedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666F75C19C8BD3100378EC9 /* AdvancedViewController.m */; };
-		1666F76019C8D49A00378EC9 /* KeyboardRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666F75F19C8D49A00378EC9 /* KeyboardRootViewController.m */; };
 		16A153D319C8D4F20054B6A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A153D219C8D4F20054B6A1 /* MainViewController.m */; };
+		16A23D1B19D35555000D4FB3 /* CalculatorMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A23D1A19D35555000D4FB3 /* CalculatorMath.m */; };
+		16A85B7419D480B5004AC8CE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A85B7319D480B5004AC8CE /* CoreData.framework */; };
+		16A85B7A19D480E8004AC8CE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16A85B7819D480E8004AC8CE /* Model.xcdatamodeld */; };
+		16E6984D19D5E716009F3A9A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E6984C19D5E716009F3A9A /* Social.framework */; };
+		16E6984F19D5ECC2009F3A9A /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E6984E19D5ECC2009F3A9A /* icon@2x.png */; };
+		16E6985119D5F1C5009F3A9A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E6985019D5F1C5009F3A9A /* MessageUI.framework */; };
+		16F4E78619D21C8000C38192 /* SwipeDownSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F4E78519D21C8000C38192 /* SwipeDownSegue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		162F385619CDB703008EC8EE /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		162F385719CDB703008EC8EE /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		1666F72019C8BB3400378EC9 /* PowerCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PowerCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1666F72319C8BB3400378EC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1666F72519C8BB3400378EC9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -54,14 +61,17 @@
 		1666F74A19C8BB3400378EC9 /* PowerCalcTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PowerCalcTests-Info.plist"; sourceTree = "<group>"; };
 		1666F74C19C8BB3400378EC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1666F74E19C8BB3400378EC9 /* PowerCalcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PowerCalcTests.m; sourceTree = "<group>"; };
-		1666F75819C8BD0200378EC9 /* BasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicViewController.h; sourceTree = "<group>"; };
-		1666F75919C8BD0200378EC9 /* BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicViewController.m; sourceTree = "<group>"; };
-		1666F75B19C8BD3100378EC9 /* AdvancedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedViewController.h; sourceTree = "<group>"; };
-		1666F75C19C8BD3100378EC9 /* AdvancedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedViewController.m; sourceTree = "<group>"; };
-		1666F75E19C8D49A00378EC9 /* KeyboardRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardRootViewController.h; path = ../KeyboardRootViewController.h; sourceTree = "<group>"; };
-		1666F75F19C8D49A00378EC9 /* KeyboardRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyboardRootViewController.m; path = ../KeyboardRootViewController.m; sourceTree = "<group>"; };
 		16A153D119C8D4F20054B6A1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		16A153D219C8D4F20054B6A1 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		16A23D1919D35555000D4FB3 /* CalculatorMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorMath.h; sourceTree = "<group>"; };
+		16A23D1A19D35555000D4FB3 /* CalculatorMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorMath.m; sourceTree = "<group>"; };
+		16A85B7319D480B5004AC8CE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		16A85B7919D480E8004AC8CE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		16E6984C19D5E716009F3A9A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		16E6984E19D5ECC2009F3A9A /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		16E6985019D5F1C5009F3A9A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		16F4E78419D21C8000C38192 /* SwipeDownSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeDownSegue.h; sourceTree = "<group>"; };
+		16F4E78519D21C8000C38192 /* SwipeDownSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeDownSegue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +79,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16E6985119D5F1C5009F3A9A /* MessageUI.framework in Frameworks */,
+				16E6984D19D5E716009F3A9A /* Social.framework in Frameworks */,
+				16A85B7419D480B5004AC8CE /* CoreData.framework in Frameworks */,
 				1666F72619C8BB3400378EC9 /* CoreGraphics.framework in Frameworks */,
 				1666F72819C8BB3400378EC9 /* UIKit.framework in Frameworks */,
 				1666F72419C8BB3400378EC9 /* Foundation.framework in Frameworks */,
@@ -110,6 +123,9 @@
 		1666F72219C8BB3400378EC9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				16E6985019D5F1C5009F3A9A /* MessageUI.framework */,
+				16E6984C19D5E716009F3A9A /* Social.framework */,
+				16A85B7319D480B5004AC8CE /* CoreData.framework */,
 				1666F72319C8BB3400378EC9 /* Foundation.framework */,
 				1666F72519C8BB3400378EC9 /* CoreGraphics.framework */,
 				1666F72719C8BB3400378EC9 /* UIKit.framework */,
@@ -121,17 +137,19 @@
 		1666F72919C8BB3400378EC9 /* PowerCalc */ = {
 			isa = PBXGroup;
 			children = (
+				16E6984E19D5ECC2009F3A9A /* icon@2x.png */,
 				1666F73519C8BB3400378EC9 /* Main.storyboard */,
+				16A85B7819D480E8004AC8CE /* Model.xcdatamodeld */,
 				1666F73219C8BB3400378EC9 /* AppDelegate.h */,
 				1666F73319C8BB3400378EC9 /* AppDelegate.m */,
 				16A153D119C8D4F20054B6A1 /* MainViewController.h */,
 				16A153D219C8D4F20054B6A1 /* MainViewController.m */,
-				1666F75819C8BD0200378EC9 /* BasicViewController.h */,
-				1666F75919C8BD0200378EC9 /* BasicViewController.m */,
-				1666F75B19C8BD3100378EC9 /* AdvancedViewController.h */,
-				1666F75C19C8BD3100378EC9 /* AdvancedViewController.m */,
-				1666F75E19C8D49A00378EC9 /* KeyboardRootViewController.h */,
-				1666F75F19C8D49A00378EC9 /* KeyboardRootViewController.m */,
+				16F4E78419D21C8000C38192 /* SwipeDownSegue.h */,
+				16F4E78519D21C8000C38192 /* SwipeDownSegue.m */,
+				162F385619CDB703008EC8EE /* HistoryViewController.h */,
+				162F385719CDB703008EC8EE /* HistoryViewController.m */,
+				16A23D1919D35555000D4FB3 /* CalculatorMath.h */,
+				16A23D1A19D35555000D4FB3 /* CalculatorMath.m */,
 				1666F73B19C8BB3400378EC9 /* Images.xcassets */,
 				1666F72A19C8BB3400378EC9 /* Supporting Files */,
 			);
@@ -214,6 +232,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Eugene Dimitrow";
 				TargetAttributes = {
+					1666F71F19C8BB3400378EC9 = {
+						DevelopmentTeam = 43CRT824P5;
+					};
 					1666F74019C8BB3400378EC9 = {
 						TestTargetID = 1666F71F19C8BB3400378EC9;
 					};
@@ -243,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16E6984F19D5ECC2009F3A9A /* icon@2x.png in Resources */,
 				1666F73C19C8BB3400378EC9 /* Images.xcassets in Resources */,
 				1666F72E19C8BB3400378EC9 /* InfoPlist.strings in Resources */,
 				1666F73719C8BB3400378EC9 /* Main.storyboard in Resources */,
@@ -264,12 +286,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1666F75D19C8BD3100378EC9 /* AdvancedViewController.m in Sources */,
 				1666F73419C8BB3400378EC9 /* AppDelegate.m in Sources */,
-				1666F76019C8D49A00378EC9 /* KeyboardRootViewController.m in Sources */,
 				16A153D319C8D4F20054B6A1 /* MainViewController.m in Sources */,
-				1666F75A19C8BD0200378EC9 /* BasicViewController.m in Sources */,
 				1666F73019C8BB3400378EC9 /* main.m in Sources */,
+				16A85B7A19D480E8004AC8CE /* Model.xcdatamodeld in Sources */,
+				16F4E78619D21C8000C38192 /* SwipeDownSegue.m in Sources */,
+				162F385819CDB703008EC8EE /* HistoryViewController.m in Sources */,
+				16A23D1B19D35555000D4FB3 /* CalculatorMath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,9 +417,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PowerCalc/PowerCalc-Prefix.pch";
 				INFOPLIST_FILE = "PowerCalc/PowerCalc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -407,9 +432,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PowerCalc/PowerCalc-Prefix.pch";
 				INFOPLIST_FILE = "PowerCalc/PowerCalc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -486,6 +513,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		16A85B7819D480E8004AC8CE /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				16A85B7919D480E8004AC8CE /* Model.xcdatamodel */,
+			);
+			currentVersion = 16A85B7919D480E8004AC8CE /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1666F71819C8BB3400378EC9 /* Project object */;
 }

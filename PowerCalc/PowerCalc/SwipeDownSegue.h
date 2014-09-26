@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DropDown : UIStoryboardSegue
+@interface SwipeDownSegue : UIStoryboardSegue
+
+-(void)perform;
 
 @end

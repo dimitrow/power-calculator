@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Social/Social.h>
+#import <MessageUI/MessageUI.h>
 
-@interface HistoryViewController : UIViewController
+@interface HistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *historyTable;
+
+- (IBAction)closeHistory;
 
 @end
