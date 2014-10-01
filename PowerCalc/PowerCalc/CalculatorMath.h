@@ -15,7 +15,7 @@
 }
 
 @property (strong, nonatomic) NSString *mathResult;
-
+- (double)mathOperation:(NSString *)operation withValue:(NSString *)value;
 - (double)choosenOperation:(NSString *)operation withNumber:(NSString *)number;
 - (void)clear;
 @end

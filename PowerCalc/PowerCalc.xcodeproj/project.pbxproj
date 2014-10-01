@@ -25,6 +25,18 @@
 		16A23D1B19D35555000D4FB3 /* CalculatorMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A23D1A19D35555000D4FB3 /* CalculatorMath.m */; };
 		16A85B7419D480B5004AC8CE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A85B7319D480B5004AC8CE /* CoreData.framework */; };
 		16A85B7A19D480E8004AC8CE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16A85B7819D480E8004AC8CE /* Model.xcdatamodeld */; };
+		16DB831F19DADDBD00BBFE64 /* a0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB831319DADDBD00BBFE64 /* a0@2x.png */; };
+		16DB832019DADDBD00BBFE64 /* a10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB831419DADDBD00BBFE64 /* a10@2x.png */; };
+		16DB832119DADDBD00BBFE64 /* a11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB831519DADDBD00BBFE64 /* a11@2x.png */; };
+		16DB832219DADDBD00BBFE64 /* a1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB831619DADDBD00BBFE64 /* a1@2x.png */; };
+		16DB832319DADDBD00BBFE64 /* a2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB831719DADDBD00BBFE64 /* a2@2x.png */; };
+		16DB832419DADDBD00BBFE64 /* a3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB831819DADDBD00BBFE64 /* a3@2x.png */; };
+		16DB832519DADDBD00BBFE64 /* a4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB831919DADDBD00BBFE64 /* a4@2x.png */; };
+		16DB832619DADDBD00BBFE64 /* a5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB831A19DADDBD00BBFE64 /* a5@2x.png */; };
+		16DB832719DADDBD00BBFE64 /* a6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB831B19DADDBD00BBFE64 /* a6@2x.png */; };
+		16DB832819DADDBD00BBFE64 /* a7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB831C19DADDBD00BBFE64 /* a7@2x.png */; };
+		16DB832919DADDBD00BBFE64 /* a8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB831D19DADDBD00BBFE64 /* a8@2x.png */; };
+		16DB832A19DADDBD00BBFE64 /* a9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB831E19DADDBD00BBFE64 /* a9@2x.png */; };
 		16E6984D19D5E716009F3A9A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E6984C19D5E716009F3A9A /* Social.framework */; };
 		16E6984F19D5ECC2009F3A9A /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E6984E19D5ECC2009F3A9A /* icon@2x.png */; };
 		16E6985119D5F1C5009F3A9A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E6985019D5F1C5009F3A9A /* MessageUI.framework */; };
@@ -67,6 +79,18 @@
 		16A23D1A19D35555000D4FB3 /* CalculatorMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorMath.m; sourceTree = "<group>"; };
 		16A85B7319D480B5004AC8CE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		16A85B7919D480E8004AC8CE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		16DB831319DADDBD00BBFE64 /* a0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a0@2x.png"; sourceTree = "<group>"; };
+		16DB831419DADDBD00BBFE64 /* a10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a10@2x.png"; sourceTree = "<group>"; };
+		16DB831519DADDBD00BBFE64 /* a11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a11@2x.png"; sourceTree = "<group>"; };
+		16DB831619DADDBD00BBFE64 /* a1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a1@2x.png"; sourceTree = "<group>"; };
+		16DB831719DADDBD00BBFE64 /* a2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a2@2x.png"; sourceTree = "<group>"; };
+		16DB831819DADDBD00BBFE64 /* a3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a3@2x.png"; sourceTree = "<group>"; };
+		16DB831919DADDBD00BBFE64 /* a4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a4@2x.png"; sourceTree = "<group>"; };
+		16DB831A19DADDBD00BBFE64 /* a5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a5@2x.png"; sourceTree = "<group>"; };
+		16DB831B19DADDBD00BBFE64 /* a6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a6@2x.png"; sourceTree = "<group>"; };
+		16DB831C19DADDBD00BBFE64 /* a7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a7@2x.png"; sourceTree = "<group>"; };
+		16DB831D19DADDBD00BBFE64 /* a8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a8@2x.png"; sourceTree = "<group>"; };
+		16DB831E19DADDBD00BBFE64 /* a9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a9@2x.png"; sourceTree = "<group>"; };
 		16E6984C19D5E716009F3A9A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		16E6984E19D5ECC2009F3A9A /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		16E6985019D5F1C5009F3A9A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -137,6 +161,7 @@
 		1666F72919C8BB3400378EC9 /* PowerCalc */ = {
 			isa = PBXGroup;
 			children = (
+				16DB831219DADDBD00BBFE64 /* buttonArt */,
 				16E6984E19D5ECC2009F3A9A /* icon@2x.png */,
 				1666F73519C8BB3400378EC9 /* Main.storyboard */,
 				16A85B7819D480E8004AC8CE /* Model.xcdatamodeld */,
@@ -183,6 +208,25 @@
 				1666F74B19C8BB3400378EC9 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		16DB831219DADDBD00BBFE64 /* buttonArt */ = {
+			isa = PBXGroup;
+			children = (
+				16DB831319DADDBD00BBFE64 /* a0@2x.png */,
+				16DB831419DADDBD00BBFE64 /* a10@2x.png */,
+				16DB831519DADDBD00BBFE64 /* a11@2x.png */,
+				16DB831619DADDBD00BBFE64 /* a1@2x.png */,
+				16DB831719DADDBD00BBFE64 /* a2@2x.png */,
+				16DB831819DADDBD00BBFE64 /* a3@2x.png */,
+				16DB831919DADDBD00BBFE64 /* a4@2x.png */,
+				16DB831A19DADDBD00BBFE64 /* a5@2x.png */,
+				16DB831B19DADDBD00BBFE64 /* a6@2x.png */,
+				16DB831C19DADDBD00BBFE64 /* a7@2x.png */,
+				16DB831D19DADDBD00BBFE64 /* a8@2x.png */,
+				16DB831E19DADDBD00BBFE64 /* a9@2x.png */,
+			);
+			path = buttonArt;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,10 +308,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16DB832219DADDBD00BBFE64 /* a1@2x.png in Resources */,
+				16DB832719DADDBD00BBFE64 /* a6@2x.png in Resources */,
+				16DB832A19DADDBD00BBFE64 /* a9@2x.png in Resources */,
+				16DB832819DADDBD00BBFE64 /* a7@2x.png in Resources */,
+				16DB832419DADDBD00BBFE64 /* a3@2x.png in Resources */,
+				16DB832519DADDBD00BBFE64 /* a4@2x.png in Resources */,
 				16E6984F19D5ECC2009F3A9A /* icon@2x.png in Resources */,
+				16DB832319DADDBD00BBFE64 /* a2@2x.png in Resources */,
+				16DB832119DADDBD00BBFE64 /* a11@2x.png in Resources */,
 				1666F73C19C8BB3400378EC9 /* Images.xcassets in Resources */,
+				16DB831F19DADDBD00BBFE64 /* a0@2x.png in Resources */,
+				16DB832619DADDBD00BBFE64 /* a5@2x.png in Resources */,
 				1666F72E19C8BB3400378EC9 /* InfoPlist.strings in Resources */,
 				1666F73719C8BB3400378EC9 /* Main.storyboard in Resources */,
+				16DB832019DADDBD00BBFE64 /* a10@2x.png in Resources */,
+				16DB832919DADDBD00BBFE64 /* a8@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +477,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PowerCalc/PowerCalc-Prefix.pch";
 				INFOPLIST_FILE = "PowerCalc/PowerCalc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -436,7 +492,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PowerCalc/PowerCalc-Prefix.pch";
 				INFOPLIST_FILE = "PowerCalc/PowerCalc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

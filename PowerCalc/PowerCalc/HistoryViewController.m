@@ -7,10 +7,16 @@
 //
 
 #import "HistoryViewController.h"
+#import "MainViewController.h"
 
 @interface HistoryViewController ()
 {
     NSInteger index;
+    NSString *historyResult;
+    NSString *historyExpression;
+    BOOL isUsingResult;
+    BOOL isUsingExpression;
+    
 }
 
 @property (strong) NSMutableArray *records;
@@ -22,6 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    isUsingResult = NO;
+    isUsingExpression = NO;
     //self.navigationController.navigationBar.tintColor = [UIColor greenColor];
     self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
 
@@ -33,6 +41,7 @@
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"History"];
     self.records = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,8 +73,6 @@
     self.historyTable = tableView;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"historyCell" forIndexPath:indexPath];
     
-
-    
     UILabel *expression = (UILabel *)[cell viewWithTag:1917];
     UILabel *result = (UILabel *)[cell viewWithTag:1984];
     UIView *cellView = (UIView *)[cell viewWithTag:1914];
@@ -77,10 +84,6 @@
     expression.text = [[self.records valueForKey:@"expression"] objectAtIndex:indexPath.row];
     result.text = [[self.records valueForKey:@"result"] objectAtIndex:indexPath.row];
     
-    //cell.textLabel.text = @"cell";
- 
- // Configure the cell...
- 
     return cell;
 }
 
@@ -102,10 +105,14 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    NSString *tempExpression = [NSString stringWithFormat:@"%@", [[self.records valueForKey:@"expression"] objectAtIndex:index]];
+    historyResult = [NSString stringWithFormat:@"%@", [[self.records valueForKey:@"result"] objectAtIndex:index]];
+    historyExpression = [tempExpression substringToIndex:[tempExpression length] - 1];
+    
     if (buttonIndex == 0) {
-        NSLog(@"Use result");
+        isUsingResult = YES;
     } else if (buttonIndex == 1) {
-        NSLog(@"Use expression");
+        isUsingExpression = YES;
     } else if (buttonIndex == 2) {
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
         pasteboard.string = [NSString stringWithFormat:@"%@%@",
@@ -124,7 +131,7 @@
         [mail setSubject:mailSubject];
         [mail setMessageBody:mailBody isHTML:NO];
 
-        [self presentViewController:mail animated:YES completion:NULL];
+        [self presentViewController:mail animated:YES completion:nil];
         
     } else if (buttonIndex == 4) {
         if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
@@ -204,40 +211,27 @@
             return;
         }
         
-        
         [self.records removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    
+    }    
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    MainViewController *mainViewController = segue.destinationViewController;
+    if (isUsingResult) {
+        mainViewController.resultLabel.text = historyResult;
+        isUsingResult = NO;
 
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
+    } else if (isUsingExpression) {
+        NSLog(@"using expression");
+        mainViewController.resultLabel.text = historyResult;
+        mainViewController.expressionLabel.text = historyExpression;
+        isUsingExpression = NO;
 
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
+    }
+    NSLog(@"nothing taken");
+}
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

@@ -9,10 +9,10 @@
 #define GAP 2
 #define ROWS_OF_KEYS 4
 #define COLUMNS_OF_KEYS 3
+#define MATH_KEYS 12
 #define BUTTON_COLOR [UIColor colorWithRed:0.940 green:0.940 blue:0.940 alpha:1.0];
 #define FBUTTON_COLOR [UIColor colorWithRed:0.880 green:0.880 blue:0.880 alpha:1.0];
 #define SCR_COLOR [UIColor colorWithRed:0.909 green:0.939 blue:0.901 alpha:1.0];
-
 
 
 #import "MainViewController.h"
@@ -22,10 +22,14 @@
 {
     NSMutableArray *keyboards;
     
+    BOOL isMath;
     BOOL isStilTyping;
     BOOL equalPressed;
     
 }
+@property (strong,nonatomic) UIView *basicKeyboard;
+@property (strong,nonatomic) UIView *advancedKeyboard;
+
 
 @end
 
@@ -37,6 +41,12 @@
     [self constructUserInterface];
     self.resultLabel.text = @"0";
     self.expressionLabel.text = @"";
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     
 }
 
@@ -69,15 +79,15 @@
     self.keyboardIndicator.frame = CGRectMake(self.view.frame.origin.x, self.keyboardView.frame.origin.y + self.keyboardView.frame.size.height, self.view.frame.size.width, 20);
     self.keyboardIndicator.backgroundColor = [UIColor clearColor];
     
-    UIView *basicKeyboard = [[UIView alloc] initWithFrame:self.keyboardView.bounds];
-    UIView *advancedKeyboard = [[UIView alloc] initWithFrame:CGRectMake(self.keyboardView.frame.size.width, basicKeyboard.frame.origin.y, self.keyboardView.contentSize.width/2, self.keyboardView.contentSize.height)];
+    self.basicKeyboard = [[UIView alloc] initWithFrame:self.keyboardView.bounds];
+    self.advancedKeyboard = [[UIView alloc] initWithFrame:CGRectMake(self.keyboardView.frame.size.width, self.basicKeyboard.frame.origin.y, self.keyboardView.contentSize.width/2, self.keyboardView.contentSize.height)];
     
     
-    basicKeyboard.backgroundColor = [UIColor clearColor];
-    advancedKeyboard.backgroundColor = [UIColor darkGrayColor];
+    self.basicKeyboard.backgroundColor = [UIColor clearColor];
+    self.advancedKeyboard.backgroundColor = [UIColor clearColor];
     
-    [self.keyboardView addSubview:basicKeyboard];
-    [self.keyboardView addSubview:advancedKeyboard];
+    [self.keyboardView addSubview:self.basicKeyboard];
+    [self.keyboardView addSubview:self.advancedKeyboard];
     
     UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeUpCatcher:)];
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
@@ -86,13 +96,14 @@
     NSString *funcTitlesString = @"+ − × ÷ ← C";
     NSArray *funcTitles = [funcTitlesString componentsSeparatedByString:@" "];
     
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < [funcTitles count]; i++) {
         NSInteger funcButtonWidht = (self.functionView.frame.size.width - GAP*([funcTitles count] + 1))/([funcTitles count]);
         UIButton *funcButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        funcButton.backgroundColor = FBUTTON_COLOR;
+        funcButton.backgroundColor = [UIColor colorWithRed:0.545 green:0.563 blue:0.541 alpha:0.6];
         funcButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
         funcButton.layer.borderWidth = 1.0;
         funcButton.layer.cornerRadius = 4.0;
+        funcButton.tintColor = [UIColor whiteColor];
         [funcButton setTitle:[funcTitles objectAtIndex:i] forState:UIControlStateNormal];
         [funcButton setFrame:CGRectMake(GAP+((funcButtonWidht + GAP) * i), GAP , funcButtonWidht, self.functionView.frame.size.height-GAP)];
         [funcButton addTarget:self action:@selector(functionButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
@@ -103,27 +114,58 @@
     
     
     NSInteger buttonWidth = (self.view.frame.size.width - GAP*(COLUMNS_OF_KEYS + 1))/COLUMNS_OF_KEYS;
-    //NSInteger rows = 12/columns;
     NSInteger buttonHeight = (self.keyboardView.frame.size.height - GAP*(ROWS_OF_KEYS))/ROWS_OF_KEYS;
     
     NSString *titleBasicString = @"7 8 9 4 5 6 1 2 3 . 0 =";
     NSArray *titlesBasic = [titleBasicString componentsSeparatedByString:@" "];
     
-    for(int i = 0; i < 12; i++)
+    for(int i = 0; i < [titlesBasic count]; i++)
     {
         UIButton *calcButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         calcButton.backgroundColor = BUTTON_COLOR;
         calcButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
         calcButton.layer.borderWidth = 1.0;
         calcButton.layer.cornerRadius = 4.0;
-        calcButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight"  size:32.0];
+        calcButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light"  size:32.0];
         calcButton.tintColor = [UIColor blackColor];
         [calcButton setTitle:[titlesBasic objectAtIndex:i] forState:UIControlStateNormal];
+        if ([calcButton.titleLabel.text isEqualToString:@"="]) {
+            calcButton.backgroundColor = [UIColor colorWithRed:0.545 green:0.563 blue:0.541 alpha:0.6];
+            calcButton.tintColor = [UIColor whiteColor];
+        }
         [calcButton setFrame:CGRectMake(GAP+((buttonWidth + GAP) * (i%COLUMNS_OF_KEYS)), GAP + (buttonHeight + GAP)*(i/COLUMNS_OF_KEYS), buttonWidth, buttonHeight)];
         
         [calcButton addTarget:self action:@selector(buttonTouched:) forControlEvents:UIControlEventTouchUpInside];
         
-        [_keyboardView addSubview:calcButton];
+        [self.basicKeyboard addSubview:calcButton];
+    }
+    
+    
+   //NSString *titleAdvancedString = @"sqrt root pow sin cos tan ln log ex pi rand 1x";
+    
+
+    for(int i = 0; i < MATH_KEYS; i++)
+    {
+        NSMutableArray *buttonTiles = [[NSMutableArray alloc] init];
+        NSString *tileImageName = [NSString stringWithFormat:@"a%i", i];
+        [buttonTiles addObject:tileImageName];
+        
+        UIButton *mathButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        mathButton.backgroundColor = BUTTON_COLOR;
+        mathButton.tag = i;
+        mathButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        mathButton.layer.borderWidth = 1.0;
+        mathButton.layer.cornerRadius = 4.0;
+        mathButton.tintColor = [UIColor blackColor];
+        
+        [mathButton setImage:[UIImage imageNamed:[buttonTiles objectAtIndex:0]] forState:UIControlStateNormal];
+        [mathButton setFrame:CGRectMake(GAP+((buttonWidth + GAP) * (i%COLUMNS_OF_KEYS)), GAP + (buttonHeight + GAP)*(i/COLUMNS_OF_KEYS), buttonWidth, buttonHeight)];
+        
+        [mathButton addTarget:self action:@selector(advancedButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.advancedKeyboard addSubview:mathButton];
+        
+        
     }
 }
 
@@ -135,9 +177,110 @@
     self.expressionLabel.text = @"";
 }
 
+- (void)mathOperation:(NSString *)selectedOperation toDisplay:(NSString *)symbol
+{
+    NSString *mathArg = [[NSString alloc] init];
+    NSNumber *checkNumber = [NSNumber numberWithDouble:[self.resultLabel.text doubleValue]];
+    NSString *checkedString = [NSString stringWithFormat:@"%@", checkNumber];
+    
+    if (![self calculator].mathResult) {
+        [[self calculator] mathOperation:selectedOperation withValue:self.resultLabel.text];
+        mathArg = self.resultLabel.text;
+    } else {
+        
+        self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:checkedString];
+        
+        [[self calculator] choosenOperation:@"" withNumber:self.resultLabel.text];
+        mathArg = [self calculator].mathResult;
+        [[self calculator] mathOperation:selectedOperation withValue:[self calculator].mathResult];
+        
+    }
+    
+    self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:symbol];
+    self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:mathArg];
+    self.resultLabel.text = [NSString stringWithFormat:@"%@", [self calculator].mathResult];
+}
+
+- (void)advancedButtonTouched:(UIButton *)sender
+{
+    NSString *operation = [[NSString alloc] init];
+    UIButton *temp = [[UIButton alloc] init];
+    isStilTyping = NO;
+    isMath = YES;
+    
+    if (sender.tag == 0) {
+        
+        operation = @"√";
+        
+        [self mathOperation:@"squareRoot" toDisplay:operation];
+        
+    } else if (sender.tag == 3) {
+        
+        operation = @"sin";
+        [self mathOperation:@"sin" toDisplay:operation];
+
+    } else if (sender.tag == 4) {
+        
+        operation = @"cos";
+        [self mathOperation:@"cos" toDisplay:operation];
+        
+    } else if (sender.tag == 5) {
+        
+        operation = @"tan";
+        [self mathOperation:@"tan" toDisplay:operation];
+        
+    } else if (sender.tag == 6) {
+        
+        operation = @"ln";
+        [self mathOperation:@"ln" toDisplay:operation];
+        
+    } else if (sender.tag == 7) {
+        
+        operation = @"log";
+        [self mathOperation:@"log" toDisplay:operation];
+        
+    } else if (sender.tag == 8) {
+        
+        operation = @"e";
+        [self mathOperation:@"e" toDisplay:operation];
+        
+    } else if (sender.tag == 9) {
+
+        isMath = NO;
+        temp.titleLabel.text = [NSString stringWithFormat:@"%g", M_PI];
+        [self buttonTouched:temp];
+        
+    } else if (sender.tag == 10) {
+        
+        isMath = NO;
+        double randomNumber = arc4random_uniform(1000);
+        temp.titleLabel.text = [NSString stringWithFormat:@"%g", randomNumber];
+        [self buttonTouched:temp];
+        
+    } else if (sender.tag == 11) {
+        
+        operation = @"1x";
+        [self mathOperation:@"1x" toDisplay:@"(1/x)"];
+        
+    } else if (sender.tag == 2) {
+        isMath = NO;
+        temp.titleLabel.text = @"^";
+        [self functionButtonTouched:temp];
+        
+    } else if (sender.tag == 1) {
+        isMath = NO;
+        temp.titleLabel.text = @"x√Y";
+        [self functionButtonTouched:temp];
+        
+    }
+
+
+
+    NSLog(@"%i", sender.tag);
+}
+
 - (void)functionButtonTouched:(UIButton *)sender
 {
-    //[[self calculator] choosenOperation:sender.currentTitle];
     
     if ([sender.currentTitle isEqual:@"C"]) {
         
@@ -165,11 +308,16 @@
         NSString *checkedString = [NSString stringWithFormat:@"%@", checkNumber];
         
         isStilTyping = NO;
+        if (!isMath) {
+            self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:checkedString];
+            self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:sender.titleLabel.text];
+        } else {
+            self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:sender.titleLabel.text];
+            isMath = NO;
 
-        self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:checkedString];
-        self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:[sender currentTitle]];
+        }
         
-        [[self calculator] choosenOperation:[sender currentTitle] withNumber:checkedString];
+        [[self calculator] choosenOperation:sender.titleLabel.text withNumber:checkedString];
         
         self.resultLabel.text = [NSString stringWithFormat:@"%@", [self calculator].mathResult];
     }
@@ -183,7 +331,7 @@
         equalPressed = NO;
     }
     
-    NSString *symbol = [sender currentTitle];
+    NSString *symbol = sender.titleLabel.text;
     if (isStilTyping) {
         
         if (![symbol isEqual:@"="] && ![symbol isEqual:@"."]) {
@@ -197,9 +345,15 @@
     if ([[sender currentTitle] isEqual:@"="]) {
         if ([self calculator].mathResult) {
             
-            self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:self.resultLabel.text];
-            self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:@"="];
-            [[self calculator] choosenOperation:@"" withNumber:self.resultLabel.text];
+            if (!isMath) {
+                self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:self.resultLabel.text];
+                self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:@"="];
+                [[self calculator] choosenOperation:@"" withNumber:self.resultLabel.text];
+                
+            } else {
+                self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:@"="];
+            }
+            
             
             self.resultLabel.text = [NSString stringWithFormat:@"%@", [self calculator].mathResult];
             
