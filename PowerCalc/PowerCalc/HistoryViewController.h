@@ -11,7 +11,8 @@
 #import <MessageUI/MessageUI.h>
 
 @interface HistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *historyTable;
+
+@property (retain, nonatomic) IBOutlet UITableView *historyTable;
 
 
 - (IBAction)closeHistory;

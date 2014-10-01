@@ -19,7 +19,7 @@
     
 }
 
-@property (strong) NSMutableArray *records;
+@property (retain) NSMutableArray *records;
 
 @end
 
@@ -30,7 +30,6 @@
     [super viewDidLoad];
     isUsingResult = NO;
     isUsingExpression = NO;
-    //self.navigationController.navigationBar.tintColor = [UIColor greenColor];
     self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
 
     // Do any additional setup after loading the view.
@@ -38,10 +37,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"History"];
-    self.records = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
-
+    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] initWithEntityName:@"History"] autorelease];
+    self.records = [[[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy] autorelease];
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,7 +91,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     index = indexPath.row;
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+    UIActionSheet *actionSheet = [[[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
@@ -99,7 +99,7 @@
                                                                       @"Use expression",
                                                                       @"Copy",
                                                                       @"Send an email",
-                                                                      @"tweet", nil];
+                                                                      @"tweet", nil] autorelease];
     [actionSheet showInView:self.view];
 }
 
@@ -124,7 +124,7 @@
 
         NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"icon@2x"]);
         
-        MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+        MFMailComposeViewController *mail = [[[MFMailComposeViewController alloc] init] autorelease];
         mail.mailComposeDelegate = self;
         [mail addAttachmentData:imageData mimeType:@"image/png" fileName:@"icon@2x"];
         
@@ -195,8 +195,6 @@
     return YES;
 }
 
-
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObjectContext *context = [self managedObjectContext];
@@ -224,14 +222,18 @@
         isUsingResult = NO;
 
     } else if (isUsingExpression) {
-        NSLog(@"using expression");
         mainViewController.resultLabel.text = historyResult;
         mainViewController.expressionLabel.text = historyExpression;
         isUsingExpression = NO;
 
     }
-    NSLog(@"nothing taken");
 }
 
-
+-(void)dealloc
+{
+    self.historyTable = nil;
+    self.records = nil;
+    
+    [super dealloc];
+}
 @end

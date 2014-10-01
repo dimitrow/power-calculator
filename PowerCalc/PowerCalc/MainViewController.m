@@ -27,8 +27,8 @@
     BOOL equalPressed;
     
 }
-@property (strong,nonatomic) UIView *basicKeyboard;
-@property (strong,nonatomic) UIView *advancedKeyboard;
+@property (retain,nonatomic) UIView *basicKeyboard;
+@property (retain,nonatomic) UIView *advancedKeyboard;
 
 
 @end
@@ -41,13 +41,6 @@
     [self constructUserInterface];
     self.resultLabel.text = @"0";
     self.expressionLabel.text = @"";
-    
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    
 }
 
 - (void)constructUserInterface
@@ -79,8 +72,8 @@
     self.keyboardIndicator.frame = CGRectMake(self.view.frame.origin.x, self.keyboardView.frame.origin.y + self.keyboardView.frame.size.height, self.view.frame.size.width, 20);
     self.keyboardIndicator.backgroundColor = [UIColor clearColor];
     
-    self.basicKeyboard = [[UIView alloc] initWithFrame:self.keyboardView.bounds];
-    self.advancedKeyboard = [[UIView alloc] initWithFrame:CGRectMake(self.keyboardView.frame.size.width, self.basicKeyboard.frame.origin.y, self.keyboardView.contentSize.width/2, self.keyboardView.contentSize.height)];
+    self.basicKeyboard = [[[UIView alloc] initWithFrame:self.keyboardView.bounds] autorelease];
+    self.advancedKeyboard = [[[UIView alloc] initWithFrame:CGRectMake(self.keyboardView.frame.size.width, self.basicKeyboard.frame.origin.y, self.keyboardView.contentSize.width/2, self.keyboardView.contentSize.height)] autorelease];
     
     
     self.basicKeyboard.backgroundColor = [UIColor clearColor];
@@ -89,7 +82,7 @@
     [self.keyboardView addSubview:self.basicKeyboard];
     [self.keyboardView addSubview:self.advancedKeyboard];
     
-    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeUpCatcher:)];
+    UISwipeGestureRecognizer *swipeDown = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeUpCatcher:)] autorelease];
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
     [self.keyboardView addGestureRecognizer:swipeDown];
     
@@ -140,13 +133,9 @@
         [self.basicKeyboard addSubview:calcButton];
     }
     
-    
-   //NSString *titleAdvancedString = @"sqrt root pow sin cos tan ln log ex pi rand 1x";
-    
-
     for(int i = 0; i < MATH_KEYS; i++)
     {
-        NSMutableArray *buttonTiles = [[NSMutableArray alloc] init];
+        NSMutableArray *buttonTiles = [[[NSMutableArray alloc] init] autorelease];
         NSString *tileImageName = [NSString stringWithFormat:@"a%i", i];
         [buttonTiles addObject:tileImageName];
         
@@ -173,13 +162,13 @@
 
 - (void)clearData
 {
-    [[self calculator] clear];
+    [calculator clear];
     self.expressionLabel.text = @"";
 }
 
 - (void)mathOperation:(NSString *)selectedOperation toDisplay:(NSString *)symbol
 {
-    NSString *mathArg = [[NSString alloc] init];
+    NSString *mathArg = nil;
     NSNumber *checkNumber = [NSNumber numberWithDouble:[self.resultLabel.text doubleValue]];
     NSString *checkedString = [NSString stringWithFormat:@"%@", checkNumber];
     
@@ -203,80 +192,69 @@
 
 - (void)advancedButtonTouched:(UIButton *)sender
 {
-    NSString *operation = [[NSString alloc] init];
-    UIButton *temp = [[UIButton alloc] init];
+    NSString *operation = nil;//[[[NSString alloc] init] autorelease];
+    UIButton *temp = [[[UIButton alloc] init] autorelease];
     isStilTyping = NO;
     isMath = YES;
     
-    if (sender.tag == 0) {
-        
-        operation = @"√";
-        
-        [self mathOperation:@"squareRoot" toDisplay:operation];
-        
-    } else if (sender.tag == 3) {
-        
-        operation = @"sin";
-        [self mathOperation:@"sin" toDisplay:operation];
-
-    } else if (sender.tag == 4) {
-        
-        operation = @"cos";
-        [self mathOperation:@"cos" toDisplay:operation];
-        
-    } else if (sender.tag == 5) {
-        
-        operation = @"tan";
-        [self mathOperation:@"tan" toDisplay:operation];
-        
-    } else if (sender.tag == 6) {
-        
-        operation = @"ln";
-        [self mathOperation:@"ln" toDisplay:operation];
-        
-    } else if (sender.tag == 7) {
-        
-        operation = @"log";
-        [self mathOperation:@"log" toDisplay:operation];
-        
-    } else if (sender.tag == 8) {
-        
-        operation = @"e";
-        [self mathOperation:@"e" toDisplay:operation];
-        
-    } else if (sender.tag == 9) {
-
-        isMath = NO;
-        temp.titleLabel.text = [NSString stringWithFormat:@"%g", M_PI];
-        [self buttonTouched:temp];
-        
-    } else if (sender.tag == 10) {
-        
-        isMath = NO;
-        double randomNumber = arc4random_uniform(1000);
-        temp.titleLabel.text = [NSString stringWithFormat:@"%g", randomNumber];
-        [self buttonTouched:temp];
-        
-    } else if (sender.tag == 11) {
-        
-        operation = @"1x";
-        [self mathOperation:@"1x" toDisplay:@"(1/x)"];
-        
-    } else if (sender.tag == 2) {
-        isMath = NO;
-        temp.titleLabel.text = @"^";
-        [self functionButtonTouched:temp];
-        
-    } else if (sender.tag == 1) {
-        isMath = NO;
-        temp.titleLabel.text = @"x√Y";
-        [self functionButtonTouched:temp];
-        
+    switch (sender.tag) {
+        case 0:
+            operation = @"√";
+            [self mathOperation:@"squareRoot" toDisplay:operation];
+            break;
+        case 1:
+            isMath = NO;
+            temp.titleLabel.text = @"x√Y";
+            [self functionButtonTouched:temp];
+            break;
+        case 2:
+            isMath = NO;
+            temp.titleLabel.text = @"^";
+            [self functionButtonTouched:temp];
+            break;
+        case 3:
+            operation = @"sin";
+            [self mathOperation:@"sin" toDisplay:operation];
+            break;
+        case 4:
+            operation = @"cos";
+            [self mathOperation:@"cos" toDisplay:operation];
+            break;
+        case 5:
+            operation = @"tan";
+            [self mathOperation:@"tan" toDisplay:operation];
+            break;
+        case 6:
+            operation = @"ln";
+            [self mathOperation:@"ln" toDisplay:operation];
+            break;
+        case 7:
+            operation = @"log";
+            [self mathOperation:@"log" toDisplay:operation];
+            break;
+        case 8:
+            operation = @"e";
+            [self mathOperation:@"e" toDisplay:operation];
+            break;
+        case 9:
+            isMath = NO;
+            temp.titleLabel.text = [NSString stringWithFormat:@"%g", M_PI];
+            [self buttonTouched:temp];
+            break;
+        case 10:
+            isMath = NO;
+            double randomNumber = arc4random_uniform(1000);
+            temp.titleLabel.text = [NSString stringWithFormat:@"%g", randomNumber];
+            [self buttonTouched:temp];
+            break;
+        case 11:
+            operation = @"1x";
+            [self mathOperation:operation toDisplay:@"(1/x)"];
+            break;
+        default:
+            break;
     }
-
-
-
-    NSLog(@"%i", sender.tag);
+    
 }
 
 - (void)functionButtonTouched:(UIButton *)sender
@@ -303,7 +281,6 @@
         
     } else {
         
-        // get rid of zero in the beginning:
         NSNumber *checkNumber = [NSNumber numberWithDouble:[self.resultLabel.text doubleValue]];
         NSString *checkedString = [NSString stringWithFormat:@"%@", checkNumber];
         
@@ -354,7 +331,6 @@
                 self.expressionLabel.text = [self.expressionLabel.text stringByAppendingString:@"="];
             }
             
-            
             self.resultLabel.text = [NSString stringWithFormat:@"%@", [self calculator].mathResult];
             
             isStilTyping = NO;
@@ -371,8 +347,7 @@
             if (![context save:&error]) {
                 NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
             }
-            
-            
+                        
         } else {
             
             self.resultLabel.text = @"0";
@@ -429,7 +404,7 @@
 - (CalculatorMath *)calculator
 {
     if (!calculator) {
-        calculator = [[CalculatorMath alloc] init];
+        calculator = [[[CalculatorMath alloc] init] retain];
     }
     return calculator;
 }
@@ -441,6 +416,23 @@
         context = [delegate managedObjectContext];
     }
     return context;
+}
+
+- (void)dealloc
+{
+    self.basicKeyboard = nil;
+    self.advancedKeyboard = nil;
+    self.advancedKeyboard = nil;
+    self.keyboardView = nil;
+    self.keyboardIndicator = nil;
+    
+    self.screenView = nil;
+    self.resultLabel = nil;
+    self.expressionLabel = nil;
+    self.functionView = nil;
+    calculator = nil;
+    [calculator release];
+    [super dealloc];
 }
 
 @end

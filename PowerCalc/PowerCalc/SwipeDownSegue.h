@@ -1,5 +1,5 @@
 //
-//  DropDown.h
+//  SwipeDownSegue.h
 //  PowerCalc
 //
 //  Created by Eugene Dimitrow on 9/24/14.

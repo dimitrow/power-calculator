@@ -42,15 +42,10 @@
     else if ([operation isEqualToString:@"1x"]) {
         result = 1/number;
     }
-//    else if ([operation isEqualToString:@"pow"]) {
-//        result = tan(rads);
-//    }
-    
     self.mathResult = [NSString stringWithFormat:@"%g", result];
     [[self operations] removeAllObjects];
     [[self numbers] removeAllObjects];
 
-    NSLog(@"math:%@ with:%@", operation, value);
     return result;
 }
 
@@ -114,7 +109,7 @@
         
     }
 
-    self.mathResult = [NSString stringWithFormat:@"%@", [[self numbers] firstObject]];
+    self.mathResult = [[NSString stringWithFormat:@"%@", [[self numbers] firstObject]] retain];
     return result;
 }
 
@@ -130,7 +125,7 @@
 - (NSMutableArray *)operations
 {
     if (!operations) {
-        operations = [[NSMutableArray alloc] init];
+        operations = [[[NSMutableArray alloc] init] retain];
     }
     return operations;
 }
@@ -138,8 +133,17 @@
 - (NSMutableArray *)numbers
 {
     if (!numbers) {
-        numbers = [[NSMutableArray alloc] init];
+        numbers = [[[NSMutableArray alloc] init] retain];
     }
     return numbers;
+}
+-(void)dealloc
+{
+    self.mathResult = nil;
+    numbers = nil;
+    operations = nil;
+    [numbers release];
+    [operations release];
+    [super dealloc];
 }
 @end

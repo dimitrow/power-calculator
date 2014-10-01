@@ -14,12 +14,12 @@
     CalculatorMath *calculator;
 }
 
-@property (weak, nonatomic) IBOutlet UIScrollView *keyboardView;
-@property (weak, nonatomic) IBOutlet UIPageControl *keyboardIndicator;
+@property (retain, nonatomic) IBOutlet UIScrollView *keyboardView;
+@property (retain, nonatomic) IBOutlet UIPageControl *keyboardIndicator;
 
-@property (weak, nonatomic) IBOutlet UIView *screenView;
-@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
-@property (weak, nonatomic) IBOutlet UILabel *expressionLabel;
-@property (weak, nonatomic) IBOutlet UIView *functionView;
+@property (retain, nonatomic) IBOutlet UIView *screenView;
+@property (retain, nonatomic) IBOutlet UILabel *resultLabel;
+@property (retain, nonatomic) IBOutlet UILabel *expressionLabel;
+@property (retain, nonatomic) IBOutlet UIView *functionView;
 
 @end
