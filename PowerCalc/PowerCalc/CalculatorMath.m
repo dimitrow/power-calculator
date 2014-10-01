@@ -102,8 +102,8 @@
             
         }
         else if ([action isEqual:@"x√Y"]) {
-            
-            result = pow(firstOperator, secondOperator);
+            double root = 1/secondOperator;
+            result = pow(firstOperator, root);
             
         }
 
